@@ -19,6 +19,8 @@ class Admin_categories extends Admin_Controller {
      */
     private $validation_rules = array();
     
+	public $section = "categories";
+	
     /**
      * Constructor method
      *

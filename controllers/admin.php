@@ -19,6 +19,7 @@ class Admin extends Admin_Controller
 	 */
 	private $validation_rules = array();
 
+	public $section = 'faqs';
 	
 	public function __construct()
 	{

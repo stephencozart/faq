@@ -57,11 +57,13 @@
             }
             $.post(post_url, form_data, function(data, response, xhr) {
                  var obj = $.parseJSON(data);
-                 create_notification(obj.status, obj.message);
                  if(obj.status == 'success')
                  {
-                    load_content(url);
+                    load_content(url,obj.status,obj.message);
+					//create_notification(obj.status, obj.message);
                  }
+				 else
+					create_notification(obj.status, obj.message);
             });
         }
         
@@ -70,10 +72,10 @@
          */
         function create_notification(type, message)
         {
-            var notice = '<div class="closable notification '+ type +'">'+message+'<a class="close" href="#">close</a></div>';
+            var notice = '<div class="alert '+ type +'">'+message+'</div>';
             remove_notification();
-            $('#shortcuts').after(notice);
-            $('.notification').slideDown('normal');
+            $('#content-body').prepend(notice);
+            $('.alert').fadeIn('normal');
         }
         
         /**
@@ -81,7 +83,7 @@
          */
         function remove_notification()
         {
-            $('.notification').slideUp('normal', function() {
+            $('.alert').fadeOut('normal', function() {
                $(this).remove(); 
             });
         }
@@ -89,9 +91,9 @@
         /**
          * Content switcher
          */
-        function load_content(load_url)
+        function load_content(load_url,type,message)
         {
-            $('#content').slideUp('normal', function() {
+            $('#content-body').fadeOut('normal', function() {
                $(this).load(load_url, function(data, response, xhr) {
                     
 					//handle answer ckeditor
@@ -105,7 +107,11 @@
 					}
 					init_ckeditor();
                     do_sortable();
-                    $(this).slideDown('normal');
+					$(this).find('.table_action_buttons button').attr('disabled','disabled');
+					if( typeof type != 'undefined' && typeof message != 'undefined' )
+						create_notification(type,message);
+						
+                    $(this).fadeIn('normal');
                });
             });
         }

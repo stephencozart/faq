@@ -31,6 +31,7 @@ $lang['faq_category_edit_title'] = "Edit Category";
 $lang['faq_page_title'] = "Frequently Asked Questions";
 $lang['faq_category_page_title'] = "Question Categories";
 $lang['faq_home_title']   = 'FAQ Home';
+$lang['faq_questions_title'] = 'Questions';#translate
 
 //links
 $lang['faq_edit_link']          = 'Edit';

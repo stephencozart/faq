@@ -11,7 +11,7 @@
  */
 class Module_Faq extends Module {
 
-	public $version = '1.0';
+	public $version = '2.0';
 	
 	public function info()
 	{
@@ -25,7 +25,31 @@ class Module_Faq extends Module {
 			'frontend' => TRUE,
 			'backend'  => TRUE,
 			'menu'	  => 'content',
-			'author' => 'Stephen Cozart'
+			'author' => 'Stephen Cozart',
+			'sections' => array(
+				'faqs' => array(
+					'name'=>'faq_questions_title',
+					'uri'=>'admin/faq',
+				    'shortcuts' => array(
+						array(
+					 	   'name' => 'faq_create_title',
+						    'uri' => 'admin/faq/create',
+							'class'=>'add'
+						),
+					),
+				),
+			    'categories' => array(
+				    'name' => 'faq_category_index_title',
+				    'uri' => 'admin/faq/categories',
+				    'shortcuts' => array(
+						array(
+					 	   'name' => 'faq_category_create_title',
+						    'uri' => 'admin/faq/categories/create',
+							'class'=>'add'
+						),
+					),
+				),
+			)
 		);
 	}
 	
