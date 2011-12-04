@@ -11,7 +11,7 @@
  */
 class Module_Faq extends Module {
 
-	public $version = '0.4';
+	public $version = '1.0';
 	
 	public function info()
 	{
@@ -31,11 +31,15 @@ class Module_Faq extends Module {
 	
 	public function install()
 	{
+		
 		$this->dbforge->drop_table('faqs');
 		$this->dbforge->drop_table('faqs_categories');
 		
+		$tbl_faqs = $this->db->dbprefix('faqs');
+		$tbl_cat = $this->db->dbprefix('faqs_categories');
+		
 		$faqs = "
-			CREATE TABLE `faqs` (
+			CREATE TABLE `{$tbl_faqs}` (
 			  `id` int(11) NOT NULL AUTO_INCREMENT,
 			  `category_id` int(11) DEFAULT '0',
 			  `question` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -47,7 +51,7 @@ class Module_Faq extends Module {
 		";
 		
 		$categories = "
-			CREATE TABLE `faqs_categories` (
+			CREATE TABLE `{$tbl_cat}` (
 				`id` int(11) NOT NULL AUTO_INCREMENT,
 				`slug` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
 				`title` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
