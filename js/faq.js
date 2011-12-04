@@ -35,7 +35,6 @@
                     order = new Array();
                     $('td.action-to input').each(function(index) {
                         var faq_id = $(this).val();
-			alert(faq_id);
                         order[index] = faq_id;
                     });
                     $.post(SITE_URL + 'admin/faq/update_order', { order : order }, function(data, response, xhr) {
