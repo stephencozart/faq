@@ -16,12 +16,15 @@ class Module_Faq extends Module {
 	public function info()
 	{
 		return array(
-			'name' => array(
-				'en' => 'FAQ'
-			),
-			'description' => array(
-				'en' => 'Manage frequently asked questions.'
-			),
+					'name' => array(
+						'en' => 'FAQ',
+						'nl' => 'Veelgestelde vragen'
+					),
+					'description' => array(
+						'en' => 'Manage frequently asked questions.',
+						'nl' => 'Beheer veelgestelde vragen.'
+					),
+		
 			'frontend' => TRUE,
 			'backend'  => TRUE,
 			'menu'	  => 'content',
